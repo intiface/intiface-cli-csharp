@@ -1,0 +1,27 @@
+steps:
+  - task: DotNetCoreCLI@2
+    displayName: "Publish Project"
+    inputs:
+      publishWebProjects: false
+      zipAfterPublish: false
+      command: 'publish'
+      arguments: '--configuration $(buildConfiguration) -f ${{ parameters.framework }} --self-contained true --no-build --output $(Build.ArtifactStagingDirectory)/$(cliBuildName) Buttplug.Server.CLI/Buttplug.Server.CLI.csproj'
+  - task: PowerShell@2
+    displayName: 'Sign CLI Executable'
+    condition: and(succeeded(), ${{ parameters.signed }})
+    inputs:
+      targetType: inline
+      script: |
+        Set-Alias Signtool 'C:\Program Files (x86)\Microsoft SDKs\ClickOnce\SignTool\signtool.exe'
+        Signtool sign /f SigningCert.pfx /p "$(NPLabsRepoSigningKey)" /tr http://timestamp.comodoca.com/rfc3161 $(Build.ArtifactStagingDirectory)\$(cliBuildName)\Buttplug.Server.CLI.exe
+  - task: ArchiveFiles@2
+    displayName: "Zip published project"
+    inputs:
+      rootFolderOrFile: "$(Build.ArtifactStagingDirectory)/$(cliBuildName)"
+      archiveType: "zip"
+      archiveFile: "$(Build.ArtifactStagingDirectory)/$(cliBuildName).zip"
+      includeRootFolder: true
+  - task: PublishPipelineArtifact@0
+    inputs:
+      targetPath: '$(Build.ArtifactStagingDirectory)'
+      artifactName: '${{ parameters.platform }}-$(buildConfiguration)'
