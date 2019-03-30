@@ -14,6 +14,13 @@ here we are.
 While this program can be used standalone, it will mostly be featured
 as a backend/engine for Intiface Desktop.
 
+## A Note About Versioning
+
+Versions of the Intiface CLI have Major/Minor/Patch semvers that track
+the version of buttplug-csharp library they depend on. Any changes to
+the intiface CLI program itself will be build versions tacked on the
+end of that range.
+
 ## Support The Project
 
 If you find this project helpful, you can [support us via
