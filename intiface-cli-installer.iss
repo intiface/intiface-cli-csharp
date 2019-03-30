@@ -25,6 +25,9 @@ OutputBaseFilename=intiface-cli-installer
 OutputDir=.\installer
 LicenseFile=LICENSE
 
+[Dirs]
+Name: "{localappdata}\Intiface"
+
 [Files]
 Source: "IntifaceCLI\bin\{#Configuration}\net47\*.exe"; DestDir: "{app}"
 Source: "IntifaceCLI\bin\{#Configuration}\net47\*.dll"; DestDir: "{app}"
@@ -36,6 +39,13 @@ Source: "LICENSE"; DestDir: "{app}"; DestName: "License.txt"
 // Filename: "{app}\Readme.txt"; Description: "View the README file"; Flags: postinstall shellexec unchecked
 
 [Code]
+
+function WriteEnginePath(): Boolean;
+begin
+  SaveStringToFile(ExpandConstant('{localappdata}\Intiface\enginepath.txt'), ExpandConstant('{app}'), False);
+  Result := true;
+end;
+
 
 // Uninstall on install code taken from https://stackoverflow.com/a/2099805/4040754
 ////////////////////////////////////////////////////////////////////
@@ -94,5 +104,9 @@ begin
     begin
       UnInstallOldVersion();
     end;
+  end;
+  if (CurStep=ssPostInstall) then
+  begin
+    WriteEnginePath();
   end;
 end;
