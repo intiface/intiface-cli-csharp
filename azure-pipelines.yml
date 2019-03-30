@@ -64,7 +64,7 @@ jobs:
         displayName: "Copy installer to staging"
         inputs:
           contents: "$(System.DefaultWorkingDirectory)/installer/*.exe"
-          targetFolder: '$(Build.ArtifactStagingDirectory)/installer'
+          targetFolder: '$(Build.ArtifactStagingDirectory)'
       - template: build/publish-cli.yml
         parameters:
           platform: "win-x64"
@@ -122,7 +122,7 @@ jobs:
           tagSource: "manual"
           tag: "420.69.666"
           title: "IntifaceCLI C# Prerelease"
-          assets: "$(System.ArtifactsDirectory)/**/*.zip"
+          assets: "$(System.ArtifactsDirectory)/**/*.(exe|dll)"
           isPreRelease: true
       - task: GitHubRelease@0
         displayName: Upload CLI Release to Github
@@ -133,5 +133,5 @@ jobs:
           action: "create"
           tagSource: "auto"
           title: "Intiface CLI C# $(gitVersion)"
-          assets: "$(System.ArtifactsDirectory)/**/*.zip"
+          assets: "$(System.ArtifactsDirectory)/**/*.(exe|dll)"
           isPreRelease: false
