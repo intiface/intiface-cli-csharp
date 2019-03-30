@@ -122,7 +122,7 @@ jobs:
           tagSource: "manual"
           tag: "420.69.666"
           title: "IntifaceCLI C# Prerelease"
-          assets: "$(System.ArtifactsDirectory)/**/*.(exe|dll)"
+          assets: "$(System.ArtifactsDirectory)/**/*(exe|zip)"
           isPreRelease: true
       - task: GitHubRelease@0
         displayName: Upload CLI Release to Github
