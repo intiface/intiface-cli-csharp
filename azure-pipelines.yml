@@ -66,6 +66,10 @@ jobs:
           contents: "$(System.DefaultWorkingDirectory)/installer/*.exe"
           targetFolder: '$(Build.ArtifactStagingDirectory)'
           flattenFolders: true
+      - task: PublishPipelineArtifact@0
+        inputs:
+          targetPath: '$(Build.ArtifactStagingDirectory)'
+          artifactName: 'win-x64-$(buildConfiguration)'
   - job: "Linux"
     pool:
       vmImage: 'ubuntu-16.04'
