@@ -5,7 +5,7 @@ steps:
       publishWebProjects: false
       zipAfterPublish: false
       command: 'publish'
-      arguments: '--configuration $(buildConfiguration) -f ${{ parameters.framework }} --self-contained true --no-build --output $(Build.ArtifactStagingDirectory)/$(cliBuildName) IntifaceCLI/IntifaceCLI.csproj'
+      arguments: '--configuration $(buildConfiguration) -r ${{ parameters.dotNetPublishPlatform }} -f ${{ parameters.framework }} --self-contained true --no-build --output $(Build.ArtifactStagingDirectory)/$(cliBuildName) IntifaceCLI/IntifaceCLI.csproj'
   - task: PowerShell@2
     displayName: 'Sign CLI Executable'
     condition: and(succeeded(), ${{ parameters.signed }})
