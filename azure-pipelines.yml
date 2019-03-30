@@ -43,7 +43,7 @@ jobs:
           targetType: inline
           script: |
             Set-Alias Signtool 'C:\Program Files (x86)\Microsoft SDKs\ClickOnce\SignTool\signtool.exe'
-            Signtool sign /f SigningCert.pfx /p "$(NPLabsRepoSigningKey)" /tr http://timestamp.comodoca.com/rfc3161 $(System.DefaultWorkingDirectory)\Buttplug.Server.CLI\bin\$(buildConfiguration)\net47\Buttplug.Server.CLI.exe
+            Signtool sign /f SigningCert.pfx /p "$(NPLabsRepoSigningKey)" /tr http://timestamp.comodoca.com/rfc3161 $(System.DefaultWorkingDirectory)\IntifaceCLI\bin\$(buildConfiguration)\net47\IntifaceCLI.exe
       - task: PowerShell@2
         displayName: "Build CLI Installer"
         inputs:
@@ -52,7 +52,7 @@ jobs:
             $Env:CONFIGURATION = "$(buildConfiguration)"
             $Env:BUILD_VERSION = "$(gitVersion)"
             cinst -y --no-progress innosetup
-            ISCC buttplug-cli-installer.iss
+            ISCC intiface-cli-installer.iss
       - task: PowerShell@2
         displayName: 'Sign CLI Installer'
         inputs:
@@ -121,7 +121,7 @@ jobs:
           action: "edit"
           tagSource: "manual"
           tag: "420.69.666"
-          title: "Buttplug C# CLI Prerelease"
+          title: "IntifaceCLI C# Prerelease"
           assets: "$(System.ArtifactsDirectory)/**/*.zip"
           isPreRelease: true
       - task: GitHubRelease@0
@@ -132,6 +132,6 @@ jobs:
           repositoryName: "buttplugio/buttplug-csharp"
           action: "create"
           tagSource: "auto"
-          title: "Buttplug C# CLI $(gitVersion)"
+          title: "Intiface CLI C# $(gitVersion)"
           assets: "$(System.ArtifactsDirectory)/**/*.zip"
           isPreRelease: false
