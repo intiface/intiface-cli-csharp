@@ -5,7 +5,7 @@ steps:
       publishWebProjects: false
       zipAfterPublish: false
       command: 'publish'
-      arguments: '--configuration $(buildConfiguration) -f ${{ parameters.framework }} --self-contained true --no-build --output $(Build.ArtifactStagingDirectory)/$(cliBuildName) Buttplug.Server.CLI/Buttplug.Server.CLI.csproj'
+      arguments: '--configuration $(buildConfiguration) -f ${{ parameters.framework }} --self-contained true --no-build --output $(Build.ArtifactStagingDirectory)/$(cliBuildName) IntifaceCLI/IntifaceCLI.csproj'
   - task: PowerShell@2
     displayName: 'Sign CLI Executable'
     condition: and(succeeded(), ${{ parameters.signed }})
@@ -13,7 +13,7 @@ steps:
       targetType: inline
       script: |
         Set-Alias Signtool 'C:\Program Files (x86)\Microsoft SDKs\ClickOnce\SignTool\signtool.exe'
-        Signtool sign /f SigningCert.pfx /p "$(NPLabsRepoSigningKey)" /tr http://timestamp.comodoca.com/rfc3161 $(Build.ArtifactStagingDirectory)\$(cliBuildName)\Buttplug.Server.CLI.exe
+        Signtool sign /f SigningCert.pfx /p "$(NPLabsRepoSigningKey)" /tr http://timestamp.comodoca.com/rfc3161 $(Build.ArtifactStagingDirectory)\$(cliBuildName)\IntifaceCLI.exe
   - task: ArchiveFiles@2
     displayName: "Zip published project"
     inputs:
