@@ -20,8 +20,8 @@ jobs:
       vmImage: 'vs2017-win2016'
     strategy:
       matrix:
-        Debug:
-          buildConfiguration: Debug
+        # Debug:
+        #   buildConfiguration: Debug
         Release:
           buildConfiguration: Release
     steps:
@@ -65,6 +65,7 @@ jobs:
         inputs:
           contents: "$(System.DefaultWorkingDirectory)/installer/*.exe"
           targetFolder: '$(Build.ArtifactStagingDirectory)'
+          flattenFolders: true
       - template: build/publish-cli.yml
         parameters:
           platform: "win-x64"
@@ -75,8 +76,8 @@ jobs:
       vmImage: 'ubuntu-16.04'
     strategy:
       matrix:
-        Debug:
-          buildConfiguration: Debug
+        # Debug:
+        #   buildConfiguration: Debug
         Release:
           buildConfiguration: Release
     steps:
@@ -89,8 +90,8 @@ jobs:
       vmImage: 'macos-10.13'
     strategy:
       matrix:
-        Debug:
-          buildConfiguration: Debug
+        # Debug:
+        #   buildConfiguration: Debug
         Release:
           buildConfiguration: Release
     steps:
@@ -122,7 +123,9 @@ jobs:
           tagSource: "manual"
           tag: "420.69.666"
           title: "IntifaceCLI C# Prerelease"
-          assets: "$(System.ArtifactsDirectory)/**/*(exe|zip)"
+          assets: |
+            $(System.ArtifactsDirectory)\**\*.zip
+            $(System.ArtifactsDirectory)\**\*installer.exe
           isPreRelease: true
       - task: GitHubRelease@0
         displayName: Upload CLI Release to Github
@@ -133,5 +136,7 @@ jobs:
           action: "create"
           tagSource: "auto"
           title: "Intiface CLI C# $(gitVersion)"
-          assets: "$(System.ArtifactsDirectory)/**/*.(exe|dll)"
+          assets: |
+            $(System.ArtifactsDirectory)\**\*.zip
+            $(System.ArtifactsDirectory)\**\*installer.exe
           isPreRelease: false
