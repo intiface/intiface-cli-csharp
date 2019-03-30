@@ -53,13 +53,14 @@ jobs:
             $Env:BUILD_VERSION = "$(gitVersion)"
             cinst -y --no-progress innosetup
             ISCC intiface-cli-installer.iss
+            move installer\intiface-cli-installer.exe installer\$(cliBuildName)-installer.exe
       - task: PowerShell@2
         displayName: 'Sign CLI Installer'
         inputs:
           targetType: inline
           script: |
             Set-Alias Signtool 'C:\Program Files (x86)\Microsoft SDKs\ClickOnce\SignTool\signtool.exe'
-            Signtool sign /f SigningCert.pfx /p "$(NPLabsRepoSigningKey)" /tr http://timestamp.comodoca.com/rfc3161 $(System.DefaultWorkingDirectory)\installer\intiface-cli-installer.exe
+            Signtool sign /f SigningCert.pfx /p "$(NPLabsRepoSigningKey)" /tr http://timestamp.comodoca.com/rfc3161 $(System.DefaultWorkingDirectory)\installer\$(cliBuildName)-installer.exe
       - task: CopyFiles@2
         displayName: "Copy installer to staging"
         inputs:
