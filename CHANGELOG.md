@@ -1,3 +1,8 @@
+# 0.4.3.0 (2019-03-31)
+
+- Update to buttplug-c# 0.4.3
+  - Fixes issues with bluetooth device reconnection
+
 # 0.4.2.1 (2019-03-30)
 
 - Add install location output to installer
