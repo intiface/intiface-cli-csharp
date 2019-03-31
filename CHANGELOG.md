@@ -1,3 +1,7 @@
+# 0.4.2.1 (2019-03-30)
+
+- Add install location output to installer
+
 # 0.4.2.0 (2019-03-29)
 
 - Split CLI from buttplug-csharp repo.
