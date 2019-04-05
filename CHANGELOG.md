@@ -1,3 +1,7 @@
+# 0.4.3.1 (2019-04-04)
+
+- Make executable fire ProcessStarted to parent when servers come up
+
 # 0.4.3.0 (2019-03-31)
 
 - Update to buttplug-c# 0.4.3
