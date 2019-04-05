@@ -49,7 +49,7 @@ namespace IntifaceCLI
                 // Largest message we can receive is 1mb, so just allocate that now.
                 var buf = new byte[1024768];
 
-                while (true)
+                while (!_exitWait.Task.IsCompleted)
                 {
                     try
                     {
@@ -199,21 +199,29 @@ namespace IntifaceCLI
                 ipcServer.ConnectionClosed += (aSender, aArgs) => { _exitWait.SetResult(true); };
                 PrintProcessLog("IPC Server now running...");
             }
+
+            // Now that all server possibilities are up and running, if we have
+            // a pipe, let the parent program know we've started.
+            if (_useProtobufOutput)
+            {
+                var msg = new ServerProcessMessage { ProcessStarted = new ServerProcessMessage.Types.ProcessStarted() };
+                SendProcessMessage(msg);
+            }
+
             _exitWait.Task.Wait();
             if (!_useProtobufOutput)
             {
                 return;
             }
-            var stopMsg = new ServerControlMessage();
-            stopMsg.Stop = new ServerControlMessage.Types.Stop();
-            using (var stdin = Console.OpenStandardInput())
-            {
-                stopMsg.WriteDelimitedTo(stdin);
-            }
+
             PrintProcessLog("Exiting");
-            var exitMsg = new ServerProcessMessage();
-            exitMsg.ProcessEnded = new ServerProcessMessage.Types.ProcessEnded();
-            SendProcessMessage(exitMsg);
+
+            if (_useProtobufOutput)
+            {
+                var exitMsg = new ServerProcessMessage();
+                exitMsg.ProcessEnded = new ServerProcessMessage.Types.ProcessEnded();
+                SendProcessMessage(exitMsg);
+            }
             _stdinTokenSource.Cancel();
         }
     }
