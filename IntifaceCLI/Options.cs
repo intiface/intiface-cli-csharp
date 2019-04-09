@@ -20,22 +20,19 @@ namespace IntifaceCLI
         [Option("userdeviceconfig", HelpText = "User Device Configuration file")]
         public string UserDeviceConfigFile { get; set; }
 
-        [Option("websocketserver", HelpText = "Run websocket server")]
-        public bool UseWebsocketServer { get; set; }
-
-        [Option("websocketserverallinterfaces", Default = false, HelpText = "If passed, listen on all interfaces. Otherwise, only listen on 127.0.0.1.")]
+        [Option("wsallinterfaces", Default = false, HelpText = "If passed, websocket server listens on all interfaces. Otherwise, only listen on 127.0.0.1.")]
         public bool WebsocketServerAllInterfaces { get; set; }
 
-        [Option("insecureport", Default = 0, HelpText = "Insecure port for websocket servers.")]
+        [Option("wsinsecureport", Default = 0, HelpText = "Insecure port for websocket servers.")]
         public int WebsocketServerInsecurePort { get; set; }
 
-        [Option("secureport", Default = 0, HelpText = "Secure port for websocket servers. Requires certificate files also be passed.")]
+        [Option("wssecureport", Default = 0, HelpText = "Secure port for websocket servers. Requires certificate files also be passed.")]
         public int WebsocketServerSecurePort { get; set; }
 
-        [Option("certfile", HelpText = "Certificate file (in PEM format) for secure Websocket Server")]
+        [Option("wscertfile", HelpText = "Certificate file (in PEM format) for secure Websocket Server")]
         public string CertFile { get; set; }
 
-        [Option("privfile", HelpText = "Private Key file (in PEM format) for secure Websocket Server")]
+        [Option("wsprivfile", HelpText = "Private Key file (in PEM format) for secure Websocket Server")]
         public string PrivFile { get; set; }
 
         [Option("ipcserver", HelpText = "Run ipc server")]
@@ -44,8 +41,8 @@ namespace IntifaceCLI
         [Option("ipcpipe", Default = "ButtplugPipe", HelpText = "Pipe name for IPC Server")]
         public string IpcPipe { get; set; }
 
-        [Option("guipipe", Default = false, HelpText = "If passed, output protobufs for parent process, instead of strings.")]
-        public bool GuiPipe { get; set; }
+        [Option("frontendpipe", Default = false, HelpText = "If passed, output protobufs for parent process, instead of strings.")]
+        public bool FrontendPipe { get; set; }
 
         [Option("pingtime", Default = 0, HelpText = "Ping timeout maximum for server (in milliseconds")]
         public int PingTime { get; set; }
