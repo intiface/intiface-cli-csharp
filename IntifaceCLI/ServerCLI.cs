@@ -26,7 +26,6 @@ namespace IntifaceCLI
         // BLE devices without completely stopping and restarting processes. :(
         private class CLIServer : ButtplugServer
         {
-            public DeviceManager DeviceManager => _deviceManager;
             public IButtplugLogManager LogManager => BpLogManager;
 
             public CLIServer(string aServerName, uint aMaxPingTime, DeviceManager aDevMgr)
