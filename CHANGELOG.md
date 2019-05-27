@@ -1,7 +1,14 @@
+# 0.4.5.0 (2019-05-26)
+
+- Update Buttplug to 0.4.5, including Kiiroo Onyx 2.1 and RealTouch
+  support.
+
 # 0.4.3.2 (2019-04-09)
 
-- Implement --stayopen, allowing multiple connections per process lifetime
-- Remove --websocketserver, now implied by --wsinsecureport and --wssecureport.
+- Implement --stayopen, allowing multiple connections per process
+  lifetime
+- Remove --websocketserver, now implied by --wsinsecureport and
+  --wssecureport.
 - --guipipe is now --frontendpipe.
 - Websocket options now use slightly shorter "ws" prefix.
 - Can now listen on IPC and websocket at the same time.
