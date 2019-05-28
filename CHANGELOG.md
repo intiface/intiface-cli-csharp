@@ -1,3 +1,8 @@
+# 0.4.6.0 (2019-05-27)
+
+- Update Buttplug to 0.4.6, fixing BouncyCastle dep collision when
+  using secure websockets.
+
 # 0.4.5.0 (2019-05-26)
 
 - Update Buttplug to 0.4.5, including Kiiroo Onyx 2.1 and RealTouch
