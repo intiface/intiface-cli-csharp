@@ -1,3 +1,8 @@
+# 0.4.7.0 (2019-06-30)
+
+- Update Buttplug to 0.4.7, adding LiBo/Svakom toy support, fixing
+  Vorze support.
+
 # 0.4.6.0 (2019-05-27)
 
 - Update Buttplug to 0.4.6, fixing BouncyCastle dep collision when
