@@ -1,3 +1,8 @@
+# 0.5.0.0 (2019-07-28)
+
+- Update Buttplug to 0.5.0, adding Realov and Kiiroo Clinoa toy
+  support, changing device config to take json instead of YAML
+
 # 0.4.7.0 (2019-06-30)
 
 - Update Buttplug to 0.4.7, adding LiBo/Svakom toy support, fixing
