@@ -17,7 +17,9 @@ AppId={{0a5b92f6-51e8-11e9-aa5c-0bbc873d2d19}
 SetupIconFile=icons\intiface-logo-1.ico
 WizardImageFile=icons\intiface-logo-1.bmp
 WizardSmallImageFile=icons\intiface-logo-1.bmp
+UsePreviousAppDir=yes
 DefaultDirName={pf}\IntifaceCLI
+Uninstallable=yes
 UninstallDisplayIcon=icons\intiface-logo-1.ico
 Compression=lzma2
 SolidCompression=yes
@@ -27,6 +29,9 @@ LicenseFile=LICENSE
 
 [Dirs]
 Name: "{localappdata}\Intiface"
+
+[UninstallDelete]
+Type: filesandordirs; Name: "{app}"
 
 [Files]
 Source: "IntifaceCLI\bin\{#Configuration}\net47\*.exe"; DestDir: "{app}"
