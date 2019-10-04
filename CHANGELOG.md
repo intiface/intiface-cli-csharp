@@ -1,7 +1,16 @@
+# 0.5.3.0 (2019-10-03)
+
+- Updated Buttplug to 0.5.3, fixing issue with JSON packing in
+  websocket server.
+
+# 0.5.1.0 (2019-09-28)
+
+- Updated Buttplug to 0.5.1, adding Motorbunny support.
+
 # 0.5.0.0 (2019-07-28)
 
 - Update Buttplug to 0.5.0, adding Realov and Kiiroo Clinoa toy
-  support, changing device config to take json instead of YAML
+  support, changing device config to take json instead of YAML.
 
 # 0.4.7.0 (2019-06-30)
 
