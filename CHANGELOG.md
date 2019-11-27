@@ -1,3 +1,8 @@
+# 0.5.4.0 (2019-11-26)
+
+- Updated Buttplug to 0.5.4, adding LiBo/Lelo/WeVibe/Lovehoney toy
+  support.
+
 # 0.5.3.0 (2019-10-03)
 
 - Updated Buttplug to 0.5.3, fixing issue with JSON packing in
