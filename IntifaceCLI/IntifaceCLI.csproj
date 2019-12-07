@@ -18,12 +18,12 @@
     <OutputType>Exe</OutputType>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Buttplug" Version="0.5.4" />
-    <PackageReference Include="Buttplug.Client.Connectors.WebsocketConnector" Version="0.5.4" />
-    <PackageReference Include="Buttplug.Server.Connectors.WebsocketServer" Version="0.5.4" />
-    <PackageReference Include="Buttplug.Server.Managers.HidSharpManager" Version="0.5.4" />
+    <PackageReference Include="Buttplug" Version="0.5.5" />
+    <PackageReference Include="Buttplug.Client.Connectors.WebsocketConnector" Version="0.5.5" />
+    <PackageReference Include="Buttplug.Server.Connectors.WebsocketServer" Version="0.5.5" />
+    <PackageReference Include="Buttplug.Server.Managers.HidSharpManager" Version="0.5.5" />
     <PackageReference Include="CommandLineParser" Version="2.6.0" />
-    <PackageReference Include="Google.Protobuf" Version="3.10.1" />
+    <PackageReference Include="Google.Protobuf" Version="3.11.1" />
     <PackageReference Include="IoTSharp.X509Extensions" Version="1.3.3" />
   </ItemGroup>
   <ItemGroup>
@@ -31,13 +31,13 @@
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net47'">
     <PackageReference Include="Buttplug.Server.Managers.UWPBluetoothManager">
-      <Version>0.5.4</Version>
+      <Version>0.5.5</Version>
     </PackageReference>
     <PackageReference Include="Buttplug.Server.Managers.WinUSBManager">
-      <Version>0.5.4</Version>
+      <Version>0.5.5</Version>
     </PackageReference>
     <PackageReference Include="Buttplug.Server.Managers.XInputGamepadManager">
-      <Version>0.5.4</Version>
+      <Version>0.5.5</Version>
     </PackageReference>
   </ItemGroup>
 </Project>
