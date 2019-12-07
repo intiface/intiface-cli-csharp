@@ -1,3 +1,7 @@
+# 0.5.5.0 (2019-12-06)
+
+- Updated Buttplug to 0.5.5, adding more Magic Motion toy support.
+
 # 0.5.4.0 (2019-11-26)
 
 - Updated Buttplug to 0.5.4, adding LiBo/Lelo/WeVibe/Lovehoney toy
