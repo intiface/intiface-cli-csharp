@@ -1,3 +1,8 @@
+# 0.5.9.0 (2020-06-17)
+
+- Updated Buttplug to 0.5.9
+- Create package generation for Buttplug Unity distribution
+
 # 0.5.5.0 (2019-12-06)
 
 - Updated Buttplug to 0.5.5, adding more Magic Motion toy support.
