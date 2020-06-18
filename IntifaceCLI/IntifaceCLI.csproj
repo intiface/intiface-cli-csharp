@@ -1,9 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup Condition=" '$(OS)' != 'Windows_NT' ">
-    <TargetFramework>netcoreapp2.1</TargetFramework>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(OS)' == 'Windows_NT' ">
-    <TargetFrameworks>net47;netcoreapp2.1</TargetFrameworks>
+  <PropertyGroup>
+    <TargetFrameworks>net47</TargetFrameworks>
   </PropertyGroup>
   <PropertyGroup>
     <PackageId />
@@ -11,33 +8,22 @@
 
     <Title>Intiface CLI</Title>
     <Summary>Intiface CLI</Summary>
-    <Description>Server Command Line Interface for running Intiface Websocket, IPC, etc Servers (.Net Framework 4.7+/.Net Standard 2.0)</Description>
+    <Description>Server Command Line Interface for running Intiface Websocket, IPC, etc Servers (.Net Framework 4.7+, Windows 10 Only)</Description>
 
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
 
     <OutputType>Exe</OutputType>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Buttplug" Version="0.5.5" />
-    <PackageReference Include="Buttplug.Client.Connectors.WebsocketConnector" Version="0.5.5" />
-    <PackageReference Include="Buttplug.Server.Connectors.WebsocketServer" Version="0.5.5" />
-    <PackageReference Include="Buttplug.Server.Managers.HidSharpManager" Version="0.5.5" />
-    <PackageReference Include="CommandLineParser" Version="2.6.0" />
-    <PackageReference Include="Google.Protobuf" Version="3.11.1" />
-    <PackageReference Include="IoTSharp.X509Extensions" Version="1.3.3" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Update="Microsoft.NETCore.App" Version="2.1.0" />
-  </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'net47'">
-    <PackageReference Include="Buttplug.Server.Managers.UWPBluetoothManager">
-      <Version>0.5.5</Version>
-    </PackageReference>
-    <PackageReference Include="Buttplug.Server.Managers.WinUSBManager">
-      <Version>0.5.5</Version>
-    </PackageReference>
-    <PackageReference Include="Buttplug.Server.Managers.XInputGamepadManager">
-      <Version>0.5.5</Version>
-    </PackageReference>
+    <PackageReference Include="Buttplug" Version="0.5.9" />
+    <PackageReference Include="Buttplug.Client.Connectors.WebsocketConnector" Version="0.5.9" />
+    <PackageReference Include="Buttplug.Server.Connectors.WebsocketServer" Version="0.5.9" />
+    <PackageReference Include="Buttplug.Server.Managers.HidSharpManager" Version="0.5.9" />
+    <PackageReference Include="CommandLineParser" Version="2.8.0" />
+    <PackageReference Include="Google.Protobuf" Version="3.12.3" />
+    <PackageReference Include="IoTSharp.X509Extensions" Version="1.4.9" />
+    <PackageReference Include="Buttplug.Server.Managers.UWPBluetoothManager" Version="0.5.9" />
+    <PackageReference Include="Buttplug.Server.Managers.WinUSBManager" Version="0.5.9" />
+    <PackageReference Include="Buttplug.Server.Managers.XInputGamepadManager" Version="0.5.9" />
   </ItemGroup>
 </Project>
