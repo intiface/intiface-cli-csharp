@@ -17,7 +17,7 @@ variables:
 jobs:
   - job: Windows
     pool:
-      vmImage: 'vs2017-win2016'
+      vmImage: 'windows-latest'
     strategy:
       matrix:
         # Debug:
@@ -44,29 +44,29 @@ jobs:
           script: |
             Set-Alias Signtool 'C:\Program Files (x86)\Microsoft SDKs\ClickOnce\SignTool\signtool.exe'
             Signtool sign /f SigningCert.pfx /p "$(NPLabsRepoSigningKey)" /td sha256 /tr http://timestamp.comodoca.com/rfc3161 $(System.DefaultWorkingDirectory)\IntifaceCLI\bin\$(buildConfiguration)\net47\IntifaceCLI.exe
-      # - task: PowerShell@2
-      #   displayName: "Build CLI Installer"
-      #   inputs:
-      #     targetType: inline
-      #     script: |
-      #       $Env:CONFIGURATION = "$(buildConfiguration)"
-      #       $Env:BUILD_VERSION = "$(gitVersion)"
-      #       cinst -y --no-progress innosetup
-      #       ISCC intiface-cli-installer.iss
-      #       move installer\intiface-cli-installer.exe installer\$(cliBuildName)-installer.exe
-      # - task: PowerShell@2
-      #   displayName: 'Sign CLI Installer'
-      #   inputs:
-      #     targetType: inline
-      #     script: |
-      #       Set-Alias Signtool 'C:\Program Files (x86)\Microsoft SDKs\ClickOnce\SignTool\signtool.exe'
-      #       Signtool sign /f SigningCert.pfx /p "$(NPLabsRepoSigningKey)" /td sha256 /tr http://timestamp.comodoca.com/rfc3161 $(System.DefaultWorkingDirectory)\installer\$(cliBuildName)-installer.exe
-      # - task: CopyFiles@2
-      #   displayName: "Copy installer to staging"
-      #   inputs:
-      #     contents: "$(System.DefaultWorkingDirectory)/installer/*.exe"
-      #     targetFolder: '$(Build.ArtifactStagingDirectory)'
-      #     flattenFolders: true
+      - task: PowerShell@2
+        displayName: "Build CLI Installer"
+        inputs:
+          targetType: inline
+          script: |
+            $Env:CONFIGURATION = "$(buildConfiguration)"
+            $Env:BUILD_VERSION = "$(gitVersion)"
+            cinst -y --no-progress innosetup
+            ISCC intiface-cli-installer.iss
+            move installer\intiface-cli-installer.exe installer\$(cliBuildName)-installer.exe
+      - task: PowerShell@2
+        displayName: 'Sign CLI Installer'
+        inputs:
+          targetType: inline
+          script: |
+            Set-Alias Signtool 'C:\Program Files (x86)\Microsoft SDKs\ClickOnce\SignTool\signtool.exe'
+            Signtool sign /f SigningCert.pfx /p "$(NPLabsRepoSigningKey)" /td sha256 /tr http://timestamp.comodoca.com/rfc3161 $(System.DefaultWorkingDirectory)\installer\$(cliBuildName)-installer.exe
+      - task: CopyFiles@2
+        displayName: "Copy installer to staging"
+        inputs:
+          contents: "$(System.DefaultWorkingDirectory)/installer/*.exe"
+          targetFolder: '$(Build.ArtifactStagingDirectory)'
+          flattenFolders: true
       - task: CopyFiles@2
         displayName: "Copy bare program for Unity distribution"
         condition: and(succeeded(), eq(variables['buildConfiguration'], 'Release'))
