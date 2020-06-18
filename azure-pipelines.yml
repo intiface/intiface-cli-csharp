@@ -83,7 +83,7 @@ jobs:
         displayName: "Archive unity artifacts"
         condition: and(succeeded(), eq(variables['buildConfiguration'], 'Release'))
         inputs:
-          rootFolderOrFile: "$(Build.ArtifactStagingDirectory)/ButtplugUnity"
+          rootFolderOrFile: "$(Build.ArtifactStagingDirectory)/IntifaceCLIUnity"
           archiveType: "zip"
           archiveFile: "$(Build.ArtifactStagingDirectory)/intiface-cli-unity-$(gitVersion).zip"
           includeRootFolder: false      
