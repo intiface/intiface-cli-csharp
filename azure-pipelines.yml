@@ -72,11 +72,11 @@ jobs:
         condition: and(succeeded(), eq(variables['buildConfiguration'], 'Release'))
         inputs:
           contents: |
-            $(System.DefaultWorkingDirectory)/IntifaceCLI/bin/Release/*.exe
-            $(System.DefaultWorkingDirectory)/IntifaceCLI/bin/Release/*.dll
-            $(System.DefaultWorkingDirectory)/IntifaceCLI/bin/Release/*.config
+            $(System.DefaultWorkingDirectory)/IntifaceCLI/bin/Release/net47/*.exe
+            $(System.DefaultWorkingDirectory)/IntifaceCLI/bin/Release/net47/*.dll
+            $(System.DefaultWorkingDirectory)/IntifaceCLI/bin/Release/net47/*.config
             $(System.DefaultWorkingDirectory)/README.md
-            $(System.DefaultWorkingDirectory)/LICENSE.md
+            $(System.DefaultWorkingDirectory)/LICENSE
           targetFolder: '$(Build.ArtifactStagingDirectory)/IntifaceCLIUnity'
           flattenFolders: true
       - task: ArchiveFiles@2
