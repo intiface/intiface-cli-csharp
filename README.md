@@ -1,3 +1,7 @@
+# DEPRECATED AND ARCHIVED
+
+This project has been superceded by [intiface-cli-rs](https://github.com/intiface/intifac-cli-rs) and will no longer be updated.
+
 # Intiface CLI - C#
 
 [![Patreon donate button](https://img.shields.io/badge/patreon-donate-yellow.svg)](https://www.patreon.com/qdot)
